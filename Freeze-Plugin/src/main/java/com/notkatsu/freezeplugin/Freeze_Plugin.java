@@ -19,8 +19,11 @@ public final class Freeze_Plugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
-        
+        if (freezeCommands.frozenPlayers.contains(event.getPlayer().getUniqueId())) {
+            event.setCancelled(true);
+        }
 
     }
+    
 
 }
