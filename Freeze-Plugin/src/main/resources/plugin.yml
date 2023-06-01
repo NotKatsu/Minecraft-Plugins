@@ -9,3 +9,6 @@ commands:
   freeze:
     description:
       Freeze a player in a certain spot so they can't move.
+  unfreeze:
+    description:
+      Unfreeze a player that was previously frozen.
