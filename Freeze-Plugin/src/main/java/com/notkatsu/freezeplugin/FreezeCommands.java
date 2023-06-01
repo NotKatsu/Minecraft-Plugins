@@ -39,13 +39,19 @@ public class FreezeCommands implements CommandExecutor {
                                 player.sendMessage(ChatColor.RED + "You have been frozen by staff.. Please wait.");
                             }
                         } else {
-                            command_author.sendMessage(ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " only Players with OP can run this command..");
+                            System.out.println(ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " only Players with OP can run this command..");
                         }
                     }
                 }
             } else {
                 System.out.println("/freeze can only be used by Players not the Console.");
             }
+        } else if (command.getName().equals("unfreeze")) {
+           if (commandSender instanceof Player) {
+            
+           } else {
+
+           }
         }
 
         return false;
