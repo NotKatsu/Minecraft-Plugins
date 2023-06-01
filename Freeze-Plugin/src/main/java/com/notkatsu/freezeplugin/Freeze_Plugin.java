@@ -23,7 +23,6 @@ public final class Freeze_Plugin extends JavaPlugin implements Listener {
         if (freezeCommands.frozenPlayers.contains(event.getPlayer().getUniqueId())) {
             event.setCancelled(true);
         }
-
     }
 
     @EventHandler

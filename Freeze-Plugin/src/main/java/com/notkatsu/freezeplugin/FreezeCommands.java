@@ -40,7 +40,6 @@ public class FreezeCommands implements CommandExecutor {
                         command_author.sendMessage(ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " only Players with OP can run this command..");
                     }
                 }
-
             }
         } else {
             System.out.println("/freeze can only be used by Players not the Console.");
