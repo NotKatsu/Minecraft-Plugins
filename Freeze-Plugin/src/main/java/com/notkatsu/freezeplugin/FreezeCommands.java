@@ -20,26 +20,26 @@ public class FreezeCommands implements CommandExecutor {
 
         if (command.getName().equals("freeze")) {
             if (commandSender instanceof Player) {
-                Player command_author = (Player) commandSender;
+                Player commandExecutor = (Player) commandSender;
 
                 if (strings.length == 1) {
                     Player player = Bukkit.getPlayer(strings[0]);
 
                     if (player == null) {
-                        command_author.sendMessage(ChatColor.RED + " that player does not exist.. Please try again.");
+                        commandExecutor.sendMessage(ChatColor.RED + " that player does not exist.. Please try again.");
 
                     } else {
-                        if (command_author.isOp()) {
+                        if (commandExecutor.isOp()) {
                             if (frozenPlayers.contains(player.getUniqueId())) {
-                                command_author.sendMessage(ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " Is already frozen..");
+                                commandExecutor.sendMessage(ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " Is already frozen..");
                             } else {
                                 frozenPlayers.add(player.getUniqueId());
 
-                                command_author.sendMessage(ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " Has been frozen successfully.");
+                                commandExecutor.sendMessage(ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " Has been frozen successfully.");
                                 player.sendMessage(ChatColor.RED + "You have been frozen by staff.. Please wait.");
                             }
                         } else {
-                            System.out.println(ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " only Players with OP can run this command..");
+                            commandExecutor.sendMessage(ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " only Players with OP can run this command..");
                         }
                     }
                 }
@@ -48,9 +48,32 @@ public class FreezeCommands implements CommandExecutor {
             }
         } else if (command.getName().equals("unfreeze")) {
            if (commandSender instanceof Player) {
-            
-           } else {
+                Player commandExecutor = (Player) commandSender;
 
+                if (commandExecutor.isOp()) {
+                    if (strings.length == 1) {
+                        Player player = Bukkit.getPlayer(strings[0]);
+
+                        if (player == null) {
+                            commandExecutor.sendMessage(ChatColor.RED + " that player does not exist.. Please try again.");
+                        } else {
+                            if (frozenPlayers.contains(player.getUniqueId())) {
+                                frozenPlayers.remove(player.getUniqueId());
+
+                                commandExecutor.sendMessage(ChatColor.GREEN + player.getDisplayName() + ChatColor.WHITE + " has been unfrozen and can now move.");
+                                player.sendMessage(ChatColor.GREEN + player.getDisplayName() + ChatColor.WHITE + " You have been unfrozen and can now move.");
+                            } else {
+                                commandExecutor.sendMessage(ChatColor.RED + " that player is not frozen..");
+
+                            }
+                        }
+
+                    }
+                } else {
+                    commandExecutor.sendMessage(ChatColor.RED + commandExecutor.getDisplayName() + ChatColor.WHITE + " only Players with OP can run this command..");
+                }
+           } else {
+               System.out.println("/unfreeze can only be used by Players not the Console.");
            }
         }
 
