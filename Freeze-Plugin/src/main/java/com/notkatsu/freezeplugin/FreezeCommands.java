@@ -67,7 +67,6 @@ public class FreezeCommands implements CommandExecutor {
 
                             }
                         }
-
                     }
                 } else {
                     commandExecutor.sendMessage(ChatColor.RED + commandExecutor.getDisplayName() + ChatColor.WHITE + " only Players with OP can run this command..");
