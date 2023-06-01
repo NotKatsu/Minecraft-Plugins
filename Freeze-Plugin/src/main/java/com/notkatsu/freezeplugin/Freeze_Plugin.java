@@ -16,6 +16,7 @@ public final class Freeze_Plugin extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(this, this);
 
         getCommand("freeze").setExecutor(freezeCommands);
+        getCommand("unfreeze").setExecutor();
     }
 
     @EventHandler
