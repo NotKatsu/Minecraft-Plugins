@@ -28,7 +28,9 @@ public class FreezeCommands implements CommandExecutor {
 
                 } else {
                     if (command_author.isOp()) {
-                        if frozenPlayers.contains(player.)
+                        if (frozenPlayers.contains(player.getUniqueId())) {
+                            command_author.sendMessage(ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " Is already frozen..");
+                        }
                     } else {
                         command_author.sendMessage(ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " only Players with OP can run this command..");
                     }
