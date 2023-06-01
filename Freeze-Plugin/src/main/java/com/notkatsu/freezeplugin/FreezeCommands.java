@@ -17,33 +17,37 @@ public class FreezeCommands implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if (commandSender instanceof Player) {
-            Player command_author = (Player) commandSender;
 
-            if (strings.length == 1) {
-                Player player = Bukkit.getPlayer(strings[0]);
+        if (command.getName().equals("freeze")) {
+            if (commandSender instanceof Player) {
+                Player command_author = (Player) commandSender;
 
-                if (player == null) {
-                    command_author.sendMessage(ChatColor.RED + " that player does not exist.. Please try again.");
+                if (strings.length == 1) {
+                    Player player = Bukkit.getPlayer(strings[0]);
 
-                } else {
-                    if (command_author.isOp()) {
-                        if (frozenPlayers.contains(player.getUniqueId())) {
-                            command_author.sendMessage(ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " Is already frozen..");
-                        } else {
-                            frozenPlayers.add(player.getUniqueId());
+                    if (player == null) {
+                        command_author.sendMessage(ChatColor.RED + " that player does not exist.. Please try again.");
 
-                            command_author.sendMessage(ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " Has been frozen successfully.");
-                            player.sendMessage(ChatColor.RED + "You have been frozen by staff.. Please wait.");
-                        }
                     } else {
-                        command_author.sendMessage(ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " only Players with OP can run this command..");
+                        if (command_author.isOp()) {
+                            if (frozenPlayers.contains(player.getUniqueId())) {
+                                command_author.sendMessage(ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " Is already frozen..");
+                            } else {
+                                frozenPlayers.add(player.getUniqueId());
+
+                                command_author.sendMessage(ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " Has been frozen successfully.");
+                                player.sendMessage(ChatColor.RED + "You have been frozen by staff.. Please wait.");
+                            }
+                        } else {
+                            command_author.sendMessage(ChatColor.RED + player.getDisplayName() + ChatColor.WHITE + " only Players with OP can run this command..");
+                        }
                     }
                 }
+            } else {
+                System.out.println("/freeze can only be used by Players not the Console.");
             }
-        } else {
-            System.out.println("/freeze can only be used by Players not the Console.");
         }
+
         return false;
     }
 }
