@@ -1,0 +1,7 @@
+name: Freeze-Plugin
+version: '${project.version}'
+main: com.notkatsu.freezeplugin.Freeze_Plugin
+api-version: 1.19
+authors: [NotKatsu]
+description: A basic plugin to freeze players so they can't move.
+website: https://katsu.bio/
