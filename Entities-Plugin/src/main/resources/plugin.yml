@@ -1,0 +1,4 @@
+name: Entities-Plugin
+version: '${project.version}'
+main: com.notkatsu.entitiesplugin.Entities_Plugin
+api-version: 1.19
